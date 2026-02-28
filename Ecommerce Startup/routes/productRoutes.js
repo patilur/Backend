@@ -7,7 +7,7 @@ POST /products returns: "Adding a new product".
 GET /products/:id returns: "Fetching product with ID: id".
 */
 
-router.get('/', productControoler.getProducts)
+router.get('/', productControoler.getAllProducts)
 
 router.get('/:id', productControoler.fetchProductwithID)
 
