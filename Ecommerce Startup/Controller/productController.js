@@ -1,14 +1,26 @@
+const productServices = require('../Services/productService');
+
 const getAllProducts = (req, res) => {
-    res.send(`Fetching all products`);
+    const product = productServices.getAllProductsService();
+    res.status(200).json(product);
+
 }
 
 const fetchProductwithID = (req, res) => {
     const id = req.params.id;
-    res.send(`Fetching product with ID:${id}`);
+    const product = productServices.fetchProductwithIDService(id);
+
+    if (!product) {
+        return res.status(404).send("Product not found");
+    }
+
+    res.status(200).json(product);
+    //return productServices.fetchProductwithIDService();
 }
 
 const addProduct = (req, res) => {
-    res.send(`Adding a new product`);
+    const newProduct = productServices.addProductService(req.body);
+    res.status(201).json(newProduct);
 }
 
 module.exports = {
