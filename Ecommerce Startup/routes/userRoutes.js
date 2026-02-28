@@ -1,24 +1,17 @@
 const express = require('express');
 const router = express.Router();
-
+const userController = require('../Controller/userController');
+const { use } = require('./cartRoutes');
 /*
 GET /users returns: "Fetching all users".
 POST /users returns: "Adding a new user".
 GET /users/:id returns: "Fetching user with ID: id".
 */
 
-router.get('/', (req, res) => {
-    //const id=req.params.userId;
-    res.send(`Fetching all users`);
-})
+router.get('/', userController.getUser);
 
-router.get('/:id', (req, res) => {
-    const id = req.params.id;
-    res.send(`Fetching user with ID:${id}`);
-})
+router.get('/:id', userController.getUserWithId);
 
-router.post('/', (req, res) => {
-    res.send(`Adding a new user`);
-})
+router.post('/', userController.addUSer);
 
-module.exports=router;
+module.exports = router;
