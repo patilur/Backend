@@ -1,7 +1,7 @@
 const path = require('path');
 
 const getAllProducts = (req, res) => {
-    res.sendFile(path.join(__dirname, "..", "view", "Product2.html"));
+    res.sendFile(path.join(__dirname, "..", "view", "Product3.html"));
 }
 
 const fetchProductwithID = (req, res) => {
@@ -11,7 +11,9 @@ const fetchProductwithID = (req, res) => {
 }
 
 const addProduct = (req, res) => {
-    res.status(201).send("Adding a new product");
+    //res.status(201).send("Adding a new product");
+    const data = req.body;
+    res.json({ value: data.productName })
 }
 
 module.exports = {
